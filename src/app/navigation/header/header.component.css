@@ -1,0 +1,59 @@
+app-header {
+    width: 100%;
+}
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    /* width: 100%; */
+    gap: 12px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover,
+a:active {
+    color: lightgrey;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav {
+    display: flex;
+}
+
+.navigation-items {
+    display: flex;
+    gap: 24px;
+}
+
+
+@media (min-width: 600px) {
+    .logo {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .navigation-items {
+        display: none;
+    }
+
+    a {
+        color: limegreen;
+    }
+}
