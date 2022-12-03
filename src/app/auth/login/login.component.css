@@ -1,0 +1,19 @@
+mat-form-field {
+  width: 300px;
+}
+
+section {
+  width: 100%;
+  margin: 12px 12px 12px 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; */
+}
+
+button {
+  display: inline-flex;
+}
