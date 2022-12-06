@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "myproject-8a6c3": {
+      "hosting": {
+        "MyAwesomeApp": [
+          "myproject-8a6c3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myproject-8a6c3"
+  }
+}

@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-// import { AuthService } from '../auth.service';
-// import { UIService } from 'src/app/shared/ui.service';
+import { AuthService } from '../auth.service';
+import { UIService } from 'src/app/shared/ui.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   private loadingSubs!: Subscription;
 
-  // constructor(private authService: AuthService, private uiService: UIService) {}
+  constructor(private authService: AuthService, private uiService: UIService) {}
 
   ngOnInit() {
     // this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
