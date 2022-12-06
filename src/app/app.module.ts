@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AuthModule } from './auth/auth.module';
+import { PostsModule } from './posts/posts.module';
 
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
@@ -19,6 +20,7 @@ import { AboutComponent } from './about/about.component';
 
 // import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+import { ProfileComponent } from './profile/profile.component';
 // import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
@@ -29,6 +31,7 @@ import { environment } from '../environments/environment';
     SidenavComponent,
     WelcomeComponent,
     AboutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,9 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule,
+    // AngularFireAuthModule,
     AuthModule,
+    PostsModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),

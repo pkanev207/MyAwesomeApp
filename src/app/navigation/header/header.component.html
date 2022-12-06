@@ -1,25 +1,25 @@
 <!-- <p (click)="onToggleSidenav()">header works!</p> -->
 <mat-toolbar color="primary">
+  <div class="logo">
+    <div>LOGO</div>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
 
-    <div class="logo">
-        <div>LOGO</div>
-        <button mat-icon-button (click)="onToggleSidenav()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
+  <div><a routerLink="/">Awesome App</a></div>
 
-    <div><a routerLink="/">Awesome App</a></div>
+  <div class="nav">
+    <ul class="navigation-items">
+      <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!isAuth"><a routerLink="/register">Register</a></li>
+      <li *ngIf="!isAuth"><a routerLink="/about">About</a></li>
 
-    <div class="nav">
-        <ul class="navigation-items">
-            <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
-            <li *ngIf="!isAuth"><a routerLink="/register">Register</a></li>
-            <li *ngIf="isAuth"><a routerLink="/profile">Profile</a></li>
-            <li *ngIf="isAuth">
-                <a style="cursor: pointer" (click)="onLogout()">Logout</a>
-            </li>
-            <li><a routerLink="/about">About</a></li>
-        </ul>
-    </div>
-
+      <li *ngIf="isAuth"><a routerLink="/profile">Profile</a></li>
+      <li *ngIf="isAuth"><a routerLink="/posts">Posts</a></li>
+      <li *ngIf="isAuth">
+        <a style="cursor: pointer" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
+  </div>
 </mat-toolbar>

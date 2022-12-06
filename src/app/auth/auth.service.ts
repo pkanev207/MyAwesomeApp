@@ -28,7 +28,7 @@ export class AuthService {
       if (user) {
         this.isAuthenticated = true;
         this.authChange.next(true);
-        this.router.navigate(['/about']);
+        this.router.navigate(['']);
       } else {
         // this.trainingService.cancelSubscriptions();
         this.authChange.next(false);
@@ -60,6 +60,7 @@ export class AuthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         console.log(res);
+        // this.router.navigate(['']);
         // this.uiService.loadingStateChanged.next(false);
       })
       .catch((error) => {
@@ -72,6 +73,7 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
+    // this.router.navigate(['/login']);
   }
 
   isAuth() {
