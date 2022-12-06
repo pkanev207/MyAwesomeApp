@@ -11,7 +11,7 @@ import { UIService } from 'src/app/shared/ui.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  loginForm!: FormGroup; // loginForm: any;
+  loginForm!: FormGroup;
   isLoading: boolean = false;
   private loadingSubs!: Subscription;
 
@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.loginForm);
-    // this.authService.login({
-    //   email: this.loginForm.value.email,
-    //   password: this.loginForm.value.password,
-    // });
+    this.authService.login({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    });
   }
 
   ngOnDestroy(): void {
