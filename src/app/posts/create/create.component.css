@@ -1,0 +1,25 @@
+mat-form-field {
+  width: 580px;
+}
+
+section {
+  width: 100%;
+  margin: 20px 12px 12px 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; */
+}
+
+button {
+  display: inline-flex;
+}
+
+@media (max-width: 600px) {
+  mat-form-field {
+    width: 300px;
+  }
+}

@@ -1,1 +1,76 @@
-<p>create works!</p>
+<section class="create-form">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="Title"
+        ngModel
+        name="title"
+        required
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="nameInput.hasError('required')">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field appearance="outline">
+      <textarea
+        matInput
+        placeholder="Choose your words carefully..."
+        ngModel
+        name="description"
+        required
+        #descInput="ngModel"
+      ></textarea>
+      <mat-error *ngIf="descInput.hasError('required')">
+        Description is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field hintLabel="Enter a valid URL" appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="URL"
+        ngModel
+        name="url"
+        required
+        #urlInput="ngModel"
+      />
+      <mat-error *ngIf="urlInput.hasError('required')">
+        Url is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-checkbox
+      labelPosition="before"
+      ngModel
+      name="agree"
+      required
+      color="primary"
+      >Private
+    </mat-checkbox>
+
+    <br />
+
+    <button
+      *ngIf="!isLoading"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      Submit
+    </button>
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>

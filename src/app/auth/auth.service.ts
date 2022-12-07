@@ -28,11 +28,11 @@ export class AuthService {
       if (user) {
         this.isAuthenticated = true;
         this.authChange.next(true);
-        this.router.navigate(['']);
+        this.router.navigate(['/profile']);
       } else {
         // this.trainingService.cancelSubscriptions();
         this.authChange.next(false);
-        this.router.navigate(['/login']);
+        this.router.navigate(['']);
         this.isAuthenticated = false;
       }
     });

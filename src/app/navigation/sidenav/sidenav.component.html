@@ -20,6 +20,15 @@
     <mat-icon>local_post_office</mat-icon>
     <span class="nav-caption">Posts</span>
   </a>
+  <a
+    mat-list-item
+    routerLink="/posts/create"
+    (click)="onClose()"
+    *ngIf="isAuth"
+  >
+    <mat-icon>edit_note</mat-icon>
+    <span>Create Post</span>
+  </a>
 
   <mat-list-item>
     <button mat-icon-button (click)="onLogout()" *ngIf="isAuth">
