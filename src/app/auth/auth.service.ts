@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthData } from './auth-data.model';
 // import { TrainingService } from '../training/training.service';
 import { UIService } from '../shared/ui.service';
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,8 @@ import { UIService } from '../shared/ui.service';
 export class AuthService {
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
+
+  user: User | any;
 
   constructor(
     private router: Router,
@@ -26,10 +29,19 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
+        console.log(user.email);
+        this.user = {
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+        };
+
         this.isAuthenticated = true;
         this.authChange.next(true);
         this.router.navigate(['/profile']);
       } else {
+        this.user = {};
+
         // this.trainingService.cancelSubscriptions();
         this.authChange.next(false);
         this.router.navigate(['']);
@@ -44,6 +56,13 @@ export class AuthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         console.log(res);
+        // this.user = {
+        //   name: res.user?.displayName,
+        //   email: res.user?.email,
+        //   uid: res.user?.uid,
+        // };
+        // console.log(this.user);
+
         // this.uiService.loadingStateChanged.next(false);
       })
       .catch((error) => {
@@ -60,6 +79,14 @@ export class AuthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         console.log(res);
+
+        // this.user = {
+        //   name: res.user?.displayName,
+        //   email: res.user?.email,
+        //   uid: res.user?.uid,
+        // };
+        // console.log(this.user);
+
         // this.router.navigate(['']);
         // this.uiService.loadingStateChanged.next(false);
       })
@@ -73,10 +100,19 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
+    this.user = {};
     // this.router.navigate(['/login']);
   }
 
   isAuth() {
     return this.isAuthenticated;
   }
+
+  getUser() {
+    return { ...this.user };
+  }
+
+  // get Iuser() {
+  //   return { ...this.user };
+  // }
 }

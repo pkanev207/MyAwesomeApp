@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { PostsService } from '../posts.service';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -9,11 +11,13 @@ import { NgForm } from '@angular/forms';
 export class CreateComponent implements OnInit {
   isLoading = false;
 
-  constructor() {}
+  constructor(private postsService: PostsService) {}
+  // constructor() {}
 
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    // console.log(form);
+    this.postsService.create(form.value);
   }
 }
