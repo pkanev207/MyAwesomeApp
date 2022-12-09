@@ -1,4 +1,4 @@
-export interface Post {
+export interface IPost {
   id?: string;
   uid: string;
   title: string;
@@ -6,7 +6,7 @@ export interface Post {
   url: string;
   author: string;
   authorEmail: string;
-  // private?: boolean;
+  private?: boolean;
   date: Date;
   updatedAt?: Date;
   likes: string[];

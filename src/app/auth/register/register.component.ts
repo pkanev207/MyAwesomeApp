@@ -20,10 +20,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     console.log(form);
-    this.authService.registerUser({
-      email: form.value.email,
-      password: form.value.password,
-    });
+    this.authService.registerUser(
+      {
+        email: form.value.email,
+        password: form.value.password,
+      },
+      form.value.name
+    );
   }
 
   ngOnDestroy(): void {}

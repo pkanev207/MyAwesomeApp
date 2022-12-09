@@ -5,9 +5,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthData } from './auth-data.model';
-// import { TrainingService } from '../training/training.service';
+// import { PostsService } from '../posts/posts.service';
 import { UIService } from '../shared/ui.service';
-import { User } from './user.model';
+import { IUser } from './user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +16,12 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
 
-  user: User | any;
+  user: IUser | any;
 
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    // private trainingService: TrainingService,
+    // private postsService: PostsService,
     private snackbar: MatSnackBar,
     private uiService: UIService
   ) {}
@@ -29,7 +29,7 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        console.log(user.email);
+        console.log(user.displayName);
         this.user = {
           name: user?.displayName,
           email: user?.email,
@@ -41,8 +41,7 @@ export class AuthService {
         this.router.navigate(['/profile']);
       } else {
         this.user = {};
-
-        // this.trainingService.cancelSubscriptions();
+        // this.postsService.cancelSubscriptions();
         this.authChange.next(false);
         this.router.navigate(['']);
         this.isAuthenticated = false;
@@ -50,18 +49,16 @@ export class AuthService {
     });
   }
 
-  registerUser(authData: AuthData) {
-    this.uiService.loadingStateChanged.next(true);
+  registerUser(authData: AuthData, name: string) {
+    console.log(authData);
+    // this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         console.log(res);
-        // this.user = {
-        //   name: res.user?.displayName,
-        //   email: res.user?.email,
-        //   uid: res.user?.uid,
-        // };
-        // console.log(this.user);
+        res.user?.updateProfile({
+          displayName: name,
+        });
 
         // this.uiService.loadingStateChanged.next(false);
       })
@@ -79,14 +76,6 @@ export class AuthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         console.log(res);
-
-        // this.user = {
-        //   name: res.user?.displayName,
-        //   email: res.user?.email,
-        //   uid: res.user?.uid,
-        // };
-        // console.log(this.user);
-
         // this.router.navigate(['']);
         // this.uiService.loadingStateChanged.next(false);
       })
@@ -111,8 +100,4 @@ export class AuthService {
   getUser() {
     return { ...this.user };
   }
-
-  // get Iuser() {
-  //   return { ...this.user };
-  // }
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from './post.model';
+import { IPost } from './post.model';
 import { AuthService } from '../auth/auth.service';
 import { UIService } from '../shared/ui.service';
 
@@ -11,6 +11,11 @@ import { UIService } from '../shared/ui.service';
   providedIn: 'root',
 })
 export class PostsService {
+  // fetchedPosts = new Subject<Post[]>();
+
+  // private postsSubscription: Subscription[] = [];
+  // private availablePosts: Post[] = [];
+
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -20,6 +25,40 @@ export class PostsService {
 
   getAll() {
     console.log('From the getAll!');
+    // this.postsSubscription.push(
+    //   this.db
+    //     .collection('posts')
+    //     .snapshotChanges()
+    //     .pipe(
+    //       map((docArray) => {
+    //         return docArray.map((doc) => {
+    //           const data: any = doc.payload.doc.data();
+    //           return { ...data };
+    //         });
+    //       })
+    //     )
+    //     .subscribe({
+    //       next: (posts: Post[]) => {
+    //         this.availablePosts = posts;
+    //         // console.log(this.availablePosts);
+    //         this.fetchedPosts.next([...this.availablePosts]);
+    //       },
+    //       error: (error) => {},
+    //       complete: () => console.log('Fetch completed'),
+    //     })
+    // );
+
+    return this.db
+      .collection('posts')
+      .snapshotChanges()
+      .pipe(
+        map((docArray) => {
+          return docArray.map((doc) => {
+            const data: any = doc.payload.doc.data();
+            return { ...data };
+          });
+        })
+      );
   }
 
   getOneById() {}
@@ -48,4 +87,6 @@ export class PostsService {
   update() {}
 
   del() {}
+
+  cancelSubscriptions() {}
 }

@@ -1,2 +1,7 @@
-<p>posts-list works!</p>
-<app-post-item></app-post-item>
+<div class="noBears" *ngIf="availablePosts.length == 0">No posts yet!</div>
+<div class="papaBear" *ngIf="availablePosts.length > 0">
+  <app-post-item
+    *ngFor="let post of availablePosts"
+    [post]="post"
+  ></app-post-item>
+</div>
