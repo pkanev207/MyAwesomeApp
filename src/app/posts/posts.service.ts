@@ -56,7 +56,11 @@ export class PostsService {
     this.router.navigate(['/posts']);
   }
 
-  update() {}
+  update(id: string, data: {}): any {
+    // this.db.collection('posts').doc(id).set(data);
+    this.db.collection('posts').doc(id).update(data);
+    this.router.navigate(['/posts']);
+  }
 
   del(id: string) {
     this.db

@@ -56,22 +56,6 @@
     <br />
 
     <br />
-    <!-- <mat-form-field hintLabel="Passwords should match.">
-      <input
-        type="password"
-        matInput
-        placeholder="Repeat password"
-        ngModel
-        name="repass"
-        required
-        minlength="6"
-        #rpwInput="ngModel"
-      />
-      <mat-hint align="end">{{ rpwInput.value?.length }} / 6</mat-hint>
-      <mat-error *ngIf="pwInput?.value.localeCompare(rpwInput?.value) ">
-        Passwords should match!
-      </mat-error>
-    </mat-form-field> -->
 
     <mat-checkbox
       labelPosition="before"
@@ -80,7 +64,7 @@
       required
       color="primary"
     >
-      Agree to Terms and Conditions.
+      <a routerLink="/about" class="link">Agree to Terms and Conditions.</a>
     </mat-checkbox>
 
     <br />

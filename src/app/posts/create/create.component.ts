@@ -12,12 +12,10 @@ export class CreateComponent implements OnInit {
   isLoading = false;
 
   constructor(private postsService: PostsService) {}
-  // constructor() {}
 
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
-    // console.log(form);
     this.postsService.create(form.value);
   }
 }

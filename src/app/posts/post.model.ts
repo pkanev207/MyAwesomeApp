@@ -6,7 +6,6 @@ export interface IPost {
   url: string;
   author: string;
   authorEmail: string;
-  private?: boolean;
   date: Date;
   updatedAt?: Date;
   likes: string[];

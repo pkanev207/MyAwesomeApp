@@ -4,7 +4,6 @@
       <input
         type="text"
         matInput
-        value="{{ post.title }}"
         ngModel="{{ post.title }}"
         name="title"
         required
@@ -21,7 +20,6 @@
       <textarea
         rows="10"
         matInput
-        placeholder="Choose your words carefully..."
         ngModel="{{ post.description }}"
         name="description"
         required
@@ -38,7 +36,6 @@
       <input
         type="text"
         matInput
-        placeholder="URL"
         ngModel="{{ post.url }}"
         name="url"
         required
@@ -48,17 +45,6 @@
         Url is required!
       </mat-error>
     </mat-form-field>
-
-    <br />
-
-    <!-- <mat-checkbox
-        labelPosition="before"
-        ngModel
-        name="private"
-        required
-        color="primary"
-        >Private
-      </mat-checkbox> -->
 
     <br />
 

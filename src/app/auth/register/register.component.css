@@ -17,3 +17,13 @@ form {
 button {
   display: inline-flex;
 }
+
+.link {
+  text-decoration: none;
+  color: lightseagreen;
+}
+
+.link:hover {
+  color: lightgray;
+  cursor: pointer;
+}

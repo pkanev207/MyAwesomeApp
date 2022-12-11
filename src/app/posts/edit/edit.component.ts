@@ -26,13 +26,14 @@ export class EditComponent implements OnInit, OnDestroy {
       },
       complete: () => {},
     });
-
-    console.log(this.post);
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
-    // this.postsService.create(form.value);
+    this.postsService.update(this.post.id!, {
+      title: form.value.title,
+      description: form.value.description,
+      url: form.value.url,
+    });
   }
 
   ngOnDestroy(): void {

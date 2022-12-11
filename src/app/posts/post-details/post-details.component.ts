@@ -59,13 +59,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  logger() {
-    console.log(this.id);
-    console.log(this.post);
-    console.log(this.user);
-    console.log(this.isAuthor);
-  }
-
   passCurrentPost() {
     this.postsService.setCurrentPost(this.post);
   }
