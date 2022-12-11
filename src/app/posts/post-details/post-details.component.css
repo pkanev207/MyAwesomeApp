@@ -3,8 +3,10 @@
 }
 mat-card-subtitle {
   /* width: 100%; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+  float: left;
+  margin-right: 12px;
 }
 
 span {
@@ -24,5 +26,11 @@ span {
 @media (max-width: 600px) {
   .papaBear {
     width: 320px;
+  }
+
+  mat-card-subtitle {
+    float: none;
+    display: flex;
+    flex-direction: column;
   }
 }

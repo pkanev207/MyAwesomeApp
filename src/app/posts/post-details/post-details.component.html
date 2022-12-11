@@ -6,7 +6,11 @@
       <mat-card-title>{{ post.title }}</mat-card-title>
       <mat-card-subtitle
         ><span>Author: {{ post.author | titlecase }}</span>
-        <span>Created At: {{ post.date }}</span>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <span
+          >Created at: {{ post.date.valueOf() | date : "dd MMM hh:mm" }}</span
+        >
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{ post.url }}" alt="{{ post.title }}" />
@@ -15,7 +19,9 @@
       <p>Likes: {{ post.likes.length }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button *ngIf="!isAuthor && !hasLiked" (click)="onLike()">LIKE</button>
+      <button mat-button *ngIf="!isAuthor && !hasLiked" (click)="onLike()">
+        LIKE
+      </button>
       <button
         mat-button
         *ngIf="isAuthor"
