@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-// import { Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPost } from './post.model';
 import { AuthService } from '../auth/auth.service';
@@ -11,6 +11,8 @@ import { UIService } from '../shared/ui.service';
   providedIn: 'root',
 })
 export class PostsService {
+  private _currentPost = new BehaviorSubject({});
+
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -67,6 +69,14 @@ export class PostsService {
       .catch(function (error) {
         console.log('Error removing document: ', error);
       });
+  }
+
+  getCurrentPost() {
+    return this._currentPost.asObservable();
+  }
+
+  setCurrentPost(data: {}) {
+    this._currentPost.next(data);
   }
 
   cancelSubscriptions() {}

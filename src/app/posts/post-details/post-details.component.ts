@@ -66,6 +66,10 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     console.log(this.isAuthor);
   }
 
+  passCurrentPost() {
+    this.postsService.setCurrentPost(this.post);
+  }
+
   onDelete() {
     if (confirm('Delete this post?') == true) {
       this.postsService.del(this.id);

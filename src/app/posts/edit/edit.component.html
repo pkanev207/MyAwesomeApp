@@ -1,1 +1,77 @@
-<p>edit works!</p>
+<section class="create-form">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        value="{{ post.title }}"
+        ngModel="{{ post.title }}"
+        name="title"
+        required
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="nameInput.hasError('required')">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field appearance="outline">
+      <textarea
+        rows="10"
+        matInput
+        placeholder="Choose your words carefully..."
+        ngModel="{{ post.description }}"
+        name="description"
+        required
+        #descInput="ngModel"
+      ></textarea>
+      <mat-error *ngIf="descInput.hasError('required')">
+        Description is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field hintLabel="Enter a valid URL" appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="URL"
+        ngModel="{{ post.url }}"
+        name="url"
+        required
+        #urlInput="ngModel"
+      />
+      <mat-error *ngIf="urlInput.hasError('required')">
+        Url is required!
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <!-- <mat-checkbox
+        labelPosition="before"
+        ngModel
+        name="private"
+        required
+        color="primary"
+        >Private
+      </mat-checkbox> -->
+
+    <br />
+
+    <button
+      *ngIf="!isLoading"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      Submit
+    </button>
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>
