@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Subject, Subscription } from 'rxjs';
+// import { Observable, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPost } from './post.model';
 import { AuthService } from '../auth/auth.service';
@@ -11,11 +11,6 @@ import { UIService } from '../shared/ui.service';
   providedIn: 'root',
 })
 export class PostsService {
-  // fetchedPosts = new Subject<Post[]>();
-
-  // private postsSubscription: Subscription[] = [];
-  // private availablePosts: Post[] = [];
-
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -24,30 +19,6 @@ export class PostsService {
   ) {}
 
   getAll() {
-    console.log('From the getAll!');
-    // this.postsSubscription.push(
-    //   this.db
-    //     .collection('posts')
-    //     .snapshotChanges()
-    //     .pipe(
-    //       map((docArray) => {
-    //         return docArray.map((doc) => {
-    //           const data: any = doc.payload.doc.data();
-    //           return { ...data };
-    //         });
-    //       })
-    //     )
-    //     .subscribe({
-    //       next: (posts: Post[]) => {
-    //         this.availablePosts = posts;
-    //         // console.log(this.availablePosts);
-    //         this.fetchedPosts.next([...this.availablePosts]);
-    //       },
-    //       error: (error) => {},
-    //       complete: () => console.log('Fetch completed'),
-    //     })
-    // );
-
     return this.db
       .collection('posts')
       .snapshotChanges()
@@ -61,10 +32,11 @@ export class PostsService {
       );
   }
 
-  getOneById() {}
+  getOneById(id: string) {
+    return this.db.collection('posts').doc(id).snapshotChanges();
+  }
 
   create(data: any) {
-    // console.log(this.authService.Iuser);
     const id = this.db.createId();
     const user = this.authService.getUser();
     const post = {
@@ -78,9 +50,7 @@ export class PostsService {
       comments: [],
     };
 
-    console.log(post);
     this.db.collection('posts').doc(id).set(post);
-    // this.db.collection('posts').add(post);
     this.router.navigate(['/posts']);
   }
 

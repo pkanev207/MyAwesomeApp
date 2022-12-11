@@ -6,19 +6,14 @@ import { ShortenContentPipe } from './pipes/shorten-content.pipe';
 import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MaterialModule
-  ],
+  imports: [CommonModule, FormsModule, MaterialModule],
   exports: [
     CommonModule,
     FormsModule,
-    MaterialModule
-  ],
-  declarations: [
+    MaterialModule,
+    ShortenTitlePipe,
     ShortenContentPipe,
-    ShortenTitlePipe
-  ]
+  ],
+  declarations: [ShortenContentPipe, ShortenTitlePipe],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -8,5 +8,7 @@ mat-sidenav {
   width: 250px;
 }
 
-
-
+main {
+  max-width: 60rem;
+  margin: 2rem auto;
+}

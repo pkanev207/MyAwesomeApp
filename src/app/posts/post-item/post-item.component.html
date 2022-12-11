@@ -3,19 +3,19 @@
 <p>{{ post?.description }}</p>
 <p>Likes: {{ post?.likes?.length }}</p>
 <img src="{{ post?.url }}" alt="" /> -->
-<mat-card [routerLink]="['/posts', post?.id]">
+<mat-card [routerLink]="['/posts', post.id]">
   <div>
-    <mat-card-title>{{ post?.title }}</mat-card-title>
-    <mat-card-subtitle>author {{ post?.author | titlecase }}</mat-card-subtitle>
+    <mat-card-title>{{ post.title | shortenTitle }}</mat-card-title>
+    <mat-card-subtitle>author {{ post.author | titlecase }}</mat-card-subtitle>
     <mat-card-content>
       <p>
-        {{ post?.description
-        }}<a [routerLink]="['/posts', post?.id]" mat-button>Read more</a>
+        {{ post.description | shortenContent
+        }}<a [routerLink]="['/posts', post.id]" mat-button>Read more</a>
       </p>
     </mat-card-content>
   </div>
   <span class="spacer"></span>
   <div class="image" align="end">
-    <img mat-card-sm-image [src]="post?.url" [alt]="post?.title" />
+    <img mat-card-sm-image [src]="post.url" [alt]="post.title" />
   </div>
 </mat-card>

@@ -20,7 +20,6 @@ export class PostsListComponent implements OnInit, OnDestroy {
       this.postsService.getAll().subscribe({
         next: (posts: IPost[]) => {
           this.availablePosts = posts;
-          console.log(this.availablePosts);
         },
         error: () => {},
         complete: () => console.log('Fetch completed!'),

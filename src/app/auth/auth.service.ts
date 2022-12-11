@@ -55,7 +55,7 @@ export class AuthService {
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         res.user?.updateProfile({
           displayName: name,
         });
@@ -75,7 +75,7 @@ export class AuthService {
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         // this.router.navigate(['']);
         // this.uiService.loadingStateChanged.next(false);
       })

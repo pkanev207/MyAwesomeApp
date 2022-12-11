@@ -1,0 +1,29 @@
+/* mat-card-header {
+  width: 100%;
+} */
+
+mat-card-subtitle {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  display: inline-flex;
+}
+
+/* .mat-card-header-text {
+  width: 100%;
+} */
+
+.papaBear {
+  width: 580px;
+  margin: auto;
+  /* width: 300px; */
+}
+
+@media (max-width: 600px) {
+  .papaBear {
+    width: 320px;
+  }
+}

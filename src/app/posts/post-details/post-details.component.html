@@ -1,1 +1,26 @@
-<p>post-details works!</p>
+<div class="noBears" *ngIf="!post">No such post!</div>
+<div class="papaBear" *ngIf="post">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image">Genata</div> -->
+      <mat-card-title>{{ post.title }}</mat-card-title>
+      <mat-card-subtitle
+        ><span>Author: {{ post.author }}</span>
+        <span>Created At: {{ post.date | date : "d MMM y, HH:mm" }}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ post.url }}" alt="{{ post.title }}" />
+    <mat-card-content>
+      <p>{{ post.description }}</p>
+      <p>Likes: {{ post.likes.length }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button *ngIf="!isAuthor">LIKE</button>
+      <button mat-button *ngIf="isAuthor">EDIT</button>
+      <button mat-button *ngIf="isAuthor">DELETE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<br />
+<button (click)="logger()">LogId</button>
