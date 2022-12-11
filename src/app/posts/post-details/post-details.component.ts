@@ -19,7 +19,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   user!: IUser;
   id!: string;
   isAuthor: boolean = false;
-  canLike: boolean = false;
+  hasLiked: boolean = false;
   private detailsPageSubs: Subscription[] = [];
 
   constructor(
@@ -52,6 +52,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
           this.post = res.payload.data() as IPost;
           this.user = this.userService.getUser();
           this.isAuthor = this.post.uid === this.user.uid;
+          this.hasLiked = this.post.likes.includes(this.user.uid);
         },
         error: () => {},
         complete: () => {},
@@ -69,6 +70,11 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     } else {
       return;
     }
+  }
+
+  onLike() {
+    this.post.likes.push(this.user.uid);
+    this.postsService.likePost(this.post.id!, { likes: this.post.likes });
   }
 
   ngOnDestroy(): void {

@@ -83,5 +83,10 @@ export class PostsService {
     this._currentPost.next(data);
   }
 
+  likePost(id: string, data: {}) {
+    console.log('From the likePost!');
+    this.db.collection('posts').doc(id).update(data);
+  }
+
   cancelSubscriptions() {}
 }

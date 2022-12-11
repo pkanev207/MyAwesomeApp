@@ -13,22 +13,22 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+// import { HeaderComponent } from './core/header/header.component';
+// import { SidenavComponent } from './core/sidenav/sidenav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 
 // import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { ProfileComponent } from './profile/profile.component';
+import { CoreModule } from './core/core.module';
 // import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SidenavComponent,
+
     WelcomeComponent,
     AboutComponent,
     ProfileComponent,
@@ -41,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     // AngularFireAuthModule,
+    CoreModule,
     AuthModule,
     PostsModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
