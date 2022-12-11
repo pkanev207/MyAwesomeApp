@@ -6,7 +6,7 @@
       <mat-card-title>{{ post.title }}</mat-card-title>
       <mat-card-subtitle
         ><span>Author: {{ post.author }}</span>
-        <span>Created At: {{ post.date | date : "d MMM y, HH:mm" }}</span>
+        <span>Created At: {{ post.date }}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{ post.url }}" alt="{{ post.title }}" />
@@ -17,7 +17,14 @@
     <mat-card-actions>
       <button mat-button *ngIf="!isAuthor">LIKE</button>
       <button mat-button *ngIf="isAuthor">EDIT</button>
-      <button mat-button *ngIf="isAuthor">DELETE</button>
+      <button
+        mat-button
+        *ngIf="isAuthor"
+        (click)="onDelete()"
+        routerLink="/posts"
+      >
+        DELETE
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

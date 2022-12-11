@@ -66,6 +66,14 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     console.log(this.isAuthor);
   }
 
+  onDelete() {
+    if (confirm('Delete this post?') == true) {
+      this.postsService.del(this.id);
+    } else {
+      return;
+    }
+  }
+
   ngOnDestroy(): void {
     this.detailsPageSubs.forEach((sub) => sub.unsubscribe());
   }

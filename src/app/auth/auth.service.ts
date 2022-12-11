@@ -38,7 +38,7 @@ export class AuthService {
 
         this.isAuthenticated = true;
         this.authChange.next(true);
-        this.router.navigate(['/profile']);
+        // this.router.navigate(['/profile']);
       } else {
         this.user = {};
         // this.postsService.cancelSubscriptions();

@@ -56,7 +56,18 @@ export class PostsService {
 
   update() {}
 
-  del() {}
+  del(id: string) {
+    this.db
+      .collection('posts')
+      .doc(id)
+      .delete()
+      .then(function () {
+        console.log('Document successfully deleted!');
+      })
+      .catch(function (error) {
+        console.log('Error removing document: ', error);
+      });
+  }
 
   cancelSubscriptions() {}
 }

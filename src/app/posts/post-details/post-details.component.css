@@ -1,7 +1,6 @@
-/* mat-card-header {
-  width: 100%;
-} */
-
+.mat-card-header .mat-card-title {
+  margin-bottom: 18px;
+}
 mat-card-subtitle {
   /* width: 100%; */
   display: flex;
