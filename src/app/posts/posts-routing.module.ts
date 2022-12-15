@@ -7,10 +7,10 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 
 const routes: Routes = [
-  { path: 'posts', component: PostsListComponent },
-  { path: 'posts/create', component: CreateComponent },
-  { path: 'posts/:id', component: PostDetailsComponent },
-  { path: 'posts/:id/edit', component: EditComponent },
+  { path: '', pathMatch: 'full', component: PostsListComponent },
+  { path: 'create', component: CreateComponent },
+  { path: ':id', component: PostDetailsComponent },
+  { path: ':id/edit', component: EditComponent },
 ];
 
 @NgModule({

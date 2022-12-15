@@ -34,6 +34,8 @@ export class PostsService {
       );
   }
 
+  getAllByUserId() {}
+
   getOneById(id: string) {
     return this.db.collection('posts').doc(id).snapshotChanges();
   }
@@ -47,7 +49,7 @@ export class PostsService {
       uid: user.uid,
       author: user.name,
       authorEmail: user.email,
-      date: new Date(),
+      date: new Date().toString(),
       likes: [],
       comments: [],
     };

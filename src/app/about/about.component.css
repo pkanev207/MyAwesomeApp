@@ -6,3 +6,8 @@ div {
 h3 {
   margin-bottom: 0;
 }
+
+section {
+  padding: 12px;
+  text-align: center;
+}

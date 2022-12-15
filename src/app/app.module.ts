@@ -13,8 +13,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 
-// import { HeaderComponent } from './core/header/header.component';
-// import { SidenavComponent } from './core/sidenav/sidenav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 

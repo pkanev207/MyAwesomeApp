@@ -11,8 +11,8 @@
 
   <div class="nav">
     <ul class="navigation-items">
-      <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
-      <li *ngIf="!isAuth"><a routerLink="/register">Register</a></li>
+      <li *ngIf="!isAuth"><a routerLink="auth/login">Login</a></li>
+      <li *ngIf="!isAuth"><a routerLink="auth/register">Register</a></li>
       <li *ngIf="!isAuth"><a routerLink="/about">About</a></li>
 
       <li *ngIf="isAuth"><a routerLink="/profile">Profile</a></li>

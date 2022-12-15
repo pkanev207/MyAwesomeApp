@@ -8,9 +8,7 @@
         ><span>Author: {{ post.author | titlecase }}</span>
       </mat-card-subtitle>
       <mat-card-subtitle>
-        <span
-          >Created at: {{ post.date.valueOf() | date : "dd MMM hh:mm" }}</span
-        >
+        <span>Created at: {{ post.date | date : "dd MMM hh:mm" }}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{ post.url }}" alt="{{ post.title }}" />

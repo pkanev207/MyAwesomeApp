@@ -38,9 +38,10 @@ export class AuthService {
 
         this.isAuthenticated = true;
         this.authChange.next(true);
-        // this.router.navigate(['/profile']);
+        this.router.navigate(['/profile']);
       } else {
-        this.user = {};
+        // this.user = {};
+        this.user = null;
         // this.postsService.cancelSubscriptions();
         this.authChange.next(false);
         this.router.navigate(['']);
@@ -50,7 +51,6 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData, name: string) {
-    console.log(authData);
     // this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
@@ -66,7 +66,7 @@ export class AuthService {
         console.log(error);
         // this.uiService.loadingStateChanged.next(false);
         // this.uiService.showSnackbar(error.message, null, 3000);
-        // this.snackbar.open(error.message, null!, { duration: 3000 });
+        this.snackbar.open(error.message, null!, { duration: 3000 });
       });
   }
 
@@ -75,7 +75,6 @@ export class AuthService {
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
-        // console.log(res);
         // this.router.navigate(['']);
         // this.uiService.loadingStateChanged.next(false);
       })
@@ -83,14 +82,14 @@ export class AuthService {
         console.log(error);
         // this.uiService.loadingStateChanged.next(false);
         // this.uiService.showSnackbar(error.message, null, 3000);
-        // this.snackbar.open(error.message, null!, { duration: 3000 });
+        this.snackbar.open(error.message, null!, { duration: 3000 });
       });
   }
 
   logout() {
     this.afAuth.signOut();
     this.user = {};
-    // this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   isAuth() {

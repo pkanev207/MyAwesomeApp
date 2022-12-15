@@ -21,7 +21,9 @@ export class PostsListComponent implements OnInit, OnDestroy {
         next: (posts: IPost[]) => {
           this.availablePosts = posts;
         },
-        error: () => {},
+        error: (err) => {
+          console.log(err);
+        },
         complete: () => console.log('Fetch completed!'),
       })
     );

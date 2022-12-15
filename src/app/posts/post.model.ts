@@ -6,8 +6,7 @@ export interface IPost {
   url: string;
   author: string;
   authorEmail: string;
-  date: Date;
-  updatedAt?: Date;
+  date: string;
   likes: string[];
   comments: string[];
 }
