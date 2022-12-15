@@ -1,4 +1,11 @@
 .noBears {
-    text-align: center;
-    margin: 20px;
+  text-align: center;
+  margin: 20px;
+}
+
+mat-spinner {
+  position: absolute;
+  text-align: center;
+  left: 45%;
+  top: 50%;
 }

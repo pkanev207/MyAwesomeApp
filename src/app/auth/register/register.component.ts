@@ -16,10 +16,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private uiService: UIService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
+      (isLoading) => {
+        this.isLoading = isLoading;
+      }
+    );
+  }
 
   onSubmit(form: NgForm) {
-    console.log(form);
     this.authService.registerUser(
       {
         email: form.value.email,
@@ -29,5 +34,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.loadingSubs) {
+      this.loadingSubs.unsubscribe();
+    }
+  }
 }

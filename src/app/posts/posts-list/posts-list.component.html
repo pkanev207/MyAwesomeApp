@@ -1,4 +1,6 @@
 <div class="noBears" *ngIf="availablePosts.length == 0">No posts yet!</div>
+<br />
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="papaBear" *ngIf="availablePosts.length > 0">
   <app-post-item
     *ngFor="let post of availablePosts"

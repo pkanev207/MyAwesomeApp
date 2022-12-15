@@ -38,7 +38,7 @@ export class AuthService {
 
         this.isAuthenticated = true;
         this.authChange.next(true);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['']);
       } else {
         // this.user = {};
         this.user = null;
@@ -51,36 +51,35 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData, name: string) {
-    // this.uiService.loadingStateChanged.next(true);
+    this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
+        this.uiService.loadingStateChanged.next(false);
         // console.log(res);
         res.user?.updateProfile({
           displayName: name,
         });
-
-        // this.uiService.loadingStateChanged.next(false);
       })
       .catch((error) => {
         console.log(error);
-        // this.uiService.loadingStateChanged.next(false);
+        this.uiService.loadingStateChanged.next(false);
         // this.uiService.showSnackbar(error.message, null, 3000);
         this.snackbar.open(error.message, null!, { duration: 3000 });
       });
   }
 
   login(authData: AuthData) {
-    // this.uiService.loadingStateChanged.next(true);
+    this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         // this.router.navigate(['']);
-        // this.uiService.loadingStateChanged.next(false);
+        this.uiService.loadingStateChanged.next(false);
       })
       .catch((error) => {
         console.log(error);
-        // this.uiService.loadingStateChanged.next(false);
+        this.uiService.loadingStateChanged.next(false);
         // this.uiService.showSnackbar(error.message, null, 3000);
         this.snackbar.open(error.message, null!, { duration: 3000 });
       });

@@ -4,8 +4,9 @@ app-header {
 
 mat-toolbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 12px;
 }
 
 ul {
@@ -48,6 +49,11 @@ a:active {
 }
 
 @media (max-width: 600px) {
+  mat-toolbar {
+    justify-content: space-around;
+    width: 120%;
+  }
+
   .navigation-items {
     display: none;
   }

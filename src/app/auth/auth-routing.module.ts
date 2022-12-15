@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   AngularFireAuthGuard,
   redirectLoggedInTo,
-  canActivate,
 } from '@angular/fire/compat/auth-guard';
 
 import { LoginComponent } from './login/login.component';

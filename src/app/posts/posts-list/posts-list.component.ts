@@ -10,19 +10,23 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./posts-list.component.css'],
 })
 export class PostsListComponent implements OnInit, OnDestroy {
+  isLoading: boolean = false;
   private postsSubscription: Subscription[] = [];
   availablePosts: IPost[] = [];
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.postsSubscription.push(
       this.postsService.getAll().subscribe({
         next: (posts: IPost[]) => {
           this.availablePosts = posts;
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);
+          this.isLoading = false;
         },
         complete: () => console.log('Fetch completed!'),
       })
@@ -30,6 +34,8 @@ export class PostsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.postsSubscription.forEach((sub) => sub.unsubscribe());
+    if (this.postsSubscription.length > 0) {
+      this.postsSubscription.forEach((sub) => sub.unsubscribe());
+    }
   }
 }

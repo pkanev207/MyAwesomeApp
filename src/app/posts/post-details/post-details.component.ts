@@ -18,6 +18,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   post!: IPost;
   user!: IUser;
   id!: string;
+  isLoading: boolean = false;
   isAuthor: boolean = false;
   hasLiked: boolean = false;
   private detailsPageSubs: Subscription[] = [];
@@ -30,6 +31,8 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.detailsPageSubs.push(
       this.route.params
         .pipe(
@@ -56,8 +59,10 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
             this.isAuthor = this.post.uid === this.user.uid;
             this.hasLiked = this.post.likes.includes(this.user.uid);
           }
+          this.isLoading = false;
         },
         error: (err) => {
+          this.isLoading = false;
           console.log(err);
         },
         complete: () => {},

@@ -1,5 +1,10 @@
 <mat-nav-list>
-  <a mat-list-item routerLink="auth/register" (click)="onClose()" *ngIf="!isAuth">
+  <a
+    mat-list-item
+    routerLink="auth/register"
+    (click)="onClose()"
+    *ngIf="!isAuth"
+  >
     <mat-icon>face</mat-icon>
     <span class="nav-caption">Register</span>
   </a>
@@ -30,8 +35,8 @@
     <span>Create Post</span>
   </a>
 
-  <mat-list-item>
-    <button mat-icon-button (click)="onLogout()" *ngIf="isAuth">
+  <mat-list-item (click)="onLogout()">
+    <button mat-icon-button *ngIf="isAuth">
       <mat-icon>eject</mat-icon>
       <span class="nav-caption">Logout</span>
     </button>

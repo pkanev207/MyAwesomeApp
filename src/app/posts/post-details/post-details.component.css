@@ -1,10 +1,11 @@
-.mat-card-header .mat-card-title {
-  margin-bottom: 18px;
+mat-spinner {
+  position: absolute;
+  text-align: center;
+  left: 45%;
+  top: 50%;
 }
+
 mat-card-subtitle {
-  /* width: 100%; */
-  /* display: flex; */
-  /* flex-direction: column; */
   float: left;
   margin-right: 12px;
 }
@@ -13,14 +14,18 @@ span {
   display: inline-flex;
 }
 
-/* .mat-card-header-text {
-  width: 100%;
-} */
+.mat-card-header .mat-card-title {
+  margin-bottom: 18px;
+}
 
 .papaBear {
   width: 580px;
   margin: auto;
-  /* width: 300px; */
+}
+
+.noBears {
+  text-align: center;
+  margin: 20px;
 }
 
 @media (max-width: 600px) {

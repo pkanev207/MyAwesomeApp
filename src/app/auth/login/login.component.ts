@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private uiService: UIService) {}
 
   ngOnInit() {
-    // this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
-    //   (isLoading) => {
-    //     this.isLoading = isLoading;
-    //   }
-    // );
+    this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
+      (isLoading) => {
+        this.isLoading = isLoading;
+      }
+    );
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email],
@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // if (this.loadingSubs) {
-    //   this.loadingSubs.unsubscribe();
-    // }
+    if (this.loadingSubs) {
+      this.loadingSubs.unsubscribe();
+    }
   }
 }
