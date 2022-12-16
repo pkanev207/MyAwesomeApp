@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthData } from './auth-data.model';
-// import { PostsService } from '../posts/posts.service';
 import { UIService } from '../shared/ui.service';
 import { IUser } from './user.model';
 
@@ -21,8 +20,7 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    // private postsService: PostsService,
-    private snackbar: MatSnackBar,
+    // private snackbar: MatSnackBar,
     private uiService: UIService
   ) {}
 
@@ -56,7 +54,6 @@ export class AuthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((res) => {
         this.uiService.loadingStateChanged.next(false);
-        // console.log(res);
         res.user?.updateProfile({
           displayName: name,
         });
@@ -64,8 +61,8 @@ export class AuthService {
       .catch((error) => {
         console.log(error);
         this.uiService.loadingStateChanged.next(false);
-        // this.uiService.showSnackbar(error.message, null, 3000);
-        this.snackbar.open(error.message, null!, { duration: 3000 });
+        this.uiService.showSnackbar(error.message, null, 3000);
+        // this.snackbar.open(error.message, null!, { duration: 3000 });
       });
   }
 
@@ -80,14 +77,15 @@ export class AuthService {
       .catch((error) => {
         console.log(error);
         this.uiService.loadingStateChanged.next(false);
-        // this.uiService.showSnackbar(error.message, null, 3000);
-        this.snackbar.open(error.message, null!, { duration: 3000 });
+        this.uiService.showSnackbar(error.message, null, 3000);
+        // this.snackbar.open(error.message, null!, { duration: 3000 });
       });
   }
 
   logout() {
+    // this.user = {};
+    this.user = null;
     this.afAuth.signOut();
-    this.user = {};
     this.router.navigate(['']);
   }
 

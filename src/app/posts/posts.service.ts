@@ -18,7 +18,7 @@ export class PostsService {
     private db: AngularFirestore,
     private authService: AuthService,
     private uiService: UIService
-  ) {}
+  ) { }
 
   getAll() {
     return this.db
@@ -29,12 +29,13 @@ export class PostsService {
           return docArray.map((doc) => {
             const data: any = doc.payload.doc.data();
             return { ...data };
+            // throw new Error('Error');
           });
         })
       );
   }
 
-  getAllByUserId() {}
+  getAllByUserId() { }
 
   getOneById(id: string) {
     return this.db.collection('posts').doc(id).snapshotChanges();
@@ -90,5 +91,5 @@ export class PostsService {
     this.db.collection('posts').doc(id).update(data);
   }
 
-  cancelSubscriptions() {}
+  cancelSubscriptions() { }
 }
