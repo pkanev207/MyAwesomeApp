@@ -13,16 +13,16 @@ const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 
 const routes: Routes = [
   {
-    path: 'auth/register',
+    path: 'register',
     component: RegisterComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { title: 'Register Page', authGuardPipe: redirectLoggedInToProfile },
+    data: { title: 'Register', authGuardPipe: redirectLoggedInToProfile },
   },
   {
-    path: 'auth/login',
+    path: 'login',
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { title: 'Login Page', authGuardPipe: redirectLoggedInToProfile },
+    data: { title: 'Login', authGuardPipe: redirectLoggedInToProfile },
   },
 ];
 

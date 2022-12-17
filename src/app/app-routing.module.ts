@@ -9,16 +9,30 @@ import { ProfileComponent } from './profile/profile.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: '', component: WelcomeComponent, data: { title: 'Home' } },
+  { path: 'about', component: AboutComponent, data: { title: 'About' } },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: { title: 'Profile' },
+    canActivate: [AuthGuard],
+  },
   {
     path: 'posts',
     loadChildren: () =>
       import('./posts/posts.module').then((m) => m.PostsModule),
     canLoad: [AuthGuard],
   },
-  { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: PagenotfoundComponent,
+    data: { title: 'Error' },
+  },
 ];
 
 @NgModule({

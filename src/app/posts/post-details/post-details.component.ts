@@ -55,7 +55,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         next: (res) => {
           this.post = res.payload.data() as IPost;
           this.user = this.userService.getUser();
-          if (this.user) {
+          if (this.user && this.post) {
             this.isAuthor = this.post.uid === this.user.uid;
             this.hasLiked = this.post.likes.includes(this.user.uid);
           }

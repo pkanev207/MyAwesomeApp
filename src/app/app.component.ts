@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivationStart, Router } from '@angular/router';
+import { filter, map } from 'rxjs';
 
 import { AuthService } from './auth/auth.service';
 
@@ -10,7 +13,21 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent implements OnInit {
   title = 'Blog Post';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private pageTitle: Title
+  ) {
+    this.router.events
+      .pipe(
+        filter((e): e is ActivationStart => e instanceof ActivationStart),
+        map((e) => e.snapshot.data?.['title']),
+        filter((d) => !!d)
+      )
+      .subscribe((pageTitle) => {
+        this.pageTitle.setTitle(pageTitle);
+      });
+  }
 
   ngOnInit(): void {
     this.authService.initAuthListener();
