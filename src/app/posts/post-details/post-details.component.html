@@ -18,6 +18,9 @@
       <p>Likes: {{ post.likes.length }}</p>
     </mat-card-content>
     <mat-card-actions>
+      <button mat-button *ngIf="!isMakingComment" (click)="onComment()">
+        COMMENT
+      </button>
       <button mat-button *ngIf="!isAuthor && !hasLiked" (click)="onLike()">
         LIKE
       </button>
@@ -39,4 +42,47 @@
       </button>
     </mat-card-actions>
   </mat-card>
+
+  <br />
+
+  <form
+    class="comment-form"
+    *ngIf="isMakingComment"
+    #f="ngForm"
+    (ngSubmit)="onSubmitComment(f)"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        matInput
+        ngModel
+        required
+        name="comment"
+        #comInput="ngModel"
+      ></textarea>
+      <mat-error *ngIf="comInput.hasError('required')">
+        Comment can not be empty!
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      Submit
+    </button>
+  </form>
+
+  <section
+    class="comments-section"
+    *ngFor="let comment of this.post.comments.reverse()"
+  >
+    <div class="comments-content">
+      <span class="uName">{{ comment.name }}:</span>
+      &nbsp;
+      <span class="uCommnet">{{ comment.comment }}</span>
+    </div>
+  </section>
 </div>

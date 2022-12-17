@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,6 +8,7 @@ import { IUser } from 'src/app/auth/user.model';
 
 import { PostsService } from '../posts.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-post-details',
@@ -15,17 +16,17 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./post-details.component.css'],
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
-  post!: IPost;
+  post?: IPost | any;
   user!: IUser;
   id!: string;
   isLoading: boolean = false;
+  isMakingComment: boolean = false;
   isAuthor: boolean = false;
   hasLiked: boolean = false;
   private detailsPageSubs: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private postsService: PostsService,
     private userService: AuthService
   ) {}
@@ -53,7 +54,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       this.postsService.getOneById(this.id).subscribe({
         next: (res) => {
           this.post = res.payload.data() as IPost;
-          // console.log(new Date(this.post.date.valueOf() * 1000));
           this.user = this.userService.getUser();
           if (this.user) {
             this.isAuthor = this.post.uid === this.user.uid;
@@ -85,6 +85,17 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   onLike() {
     this.post.likes.push(this.user.uid);
     this.postsService.likePost(this.post.id!, { likes: this.post.likes });
+  }
+
+  onComment() {
+    this.isMakingComment = true;
+  }
+
+  onSubmitComment(form: NgForm) {
+    const comment = { ...form.value, ...this.user };
+    this.post.comments.push(comment);
+    this.postsService.addComment(this.post.comments, this.post.id);
+    this.isMakingComment = false;
   }
 
   ngOnDestroy(): void {
