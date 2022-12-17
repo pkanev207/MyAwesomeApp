@@ -15,7 +15,10 @@ export class PostsListComponent implements OnInit, OnDestroy {
   private postsSubscription: Subscription[] = [];
   availablePosts: IPost[] = [];
 
-  constructor(private postsService: PostsService, private uiService: UIService) { }
+  constructor(
+    private postsService: PostsService,
+    private uiService: UIService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -28,7 +31,11 @@ export class PostsListComponent implements OnInit, OnDestroy {
         error: (err) => {
           console.log(err);
           this.isLoading = false;
-          this.uiService.showSnackbar('Fetching posts failed, please try again later.', null, 3000);
+          this.uiService.showSnackbar(
+            'Fetching posts failed, please try again later.',
+            null,
+            3000
+          );
         },
         complete: () => console.log('Fetch completed!'),
       })

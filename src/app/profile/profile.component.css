@@ -1,0 +1,52 @@
+h3 {
+  text-align: center;
+}
+
+mat-spinner {
+  position: absolute;
+  text-align: center;
+  left: 45%;
+  top: 50%;
+}
+
+mat-card {
+  /* max-height: 100px; */
+  display: flex;
+  cursor: pointer;
+  margin: 0.7rem;
+}
+
+mat-card div {
+  margin: 0.5em;
+}
+
+.image {
+  height: 100px;
+  width: auto;
+  background: inherit;
+}
+
+img {
+  border-radius: 0.3em;
+  overflow: hidden;
+  box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.5);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.noBears {
+  text-align: center;
+  margin: 20px;
+}
+
+.user-email {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  mat-spinner {
+    left: 40%;
+  }
+}

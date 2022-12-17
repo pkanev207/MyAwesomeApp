@@ -9,3 +9,9 @@ mat-spinner {
   left: 45%;
   top: 50%;
 }
+
+@media (max-width: 600px) {
+  mat-spinner {
+    left: 40%;
+  }
+}

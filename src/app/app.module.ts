@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
+import { SharedModule } from './shared/shared.module';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
@@ -45,6 +46,7 @@ import { CoreModule } from './core/core.module';
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
