@@ -1,6 +1,20 @@
-# MyAwesomeApp
+# SoftUni-BlogPost
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+This project is for Project Defense - Regular Exam at SoftUni for Angular course - November 2022.
+It uses Angular Material, AngularFire and Firebase for backend service, storage, authentication, and deployment services.
+It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+
+## Application structure
+
+The application has public part - accessible without authentication and private part - available for registered users. There is and mobile view at 600px.
+
+### Public part
+
+Includes Welcome, Register, Login and About pages. Also provides register and login functionalities with Firebase.
+
+### Private part
+
+Includes Profile, Posts, Details and Edit pages. Also provides CRUD operations with Firebase for posts, making comments, like and logout functionalities.
 
 ## Development server
 

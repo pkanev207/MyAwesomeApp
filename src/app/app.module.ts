@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { environment } from '../environments/environment';
 import { ProfileComponent } from './profile/profile.component';
 import { CoreModule } from './core/core.module';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 // import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
@@ -31,6 +32,7 @@ import { CoreModule } from './core/core.module';
     WelcomeComponent,
     AboutComponent,
     ProfileComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

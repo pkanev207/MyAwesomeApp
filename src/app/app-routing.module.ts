@@ -6,6 +6,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
       import('./posts/posts.module').then((m) => m.PostsModule),
     canLoad: [AuthGuard],
   },
+  { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
 ];
 
 @NgModule({
