@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AuthModule } from './auth/auth.module';
-import { PostsModule } from './posts/posts.module';
+// import { PostsModule } from './posts/posts.module';
 import { SharedModule } from './shared/shared.module';
 
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -44,7 +44,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     // AngularFireAuthModule,
     CoreModule,
     AuthModule,
-    PostsModule,
+    // PostsModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
