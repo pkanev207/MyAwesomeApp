@@ -61,7 +61,6 @@ export class PostsService {
   }
 
   update(id: string, data: {}): any {
-    // this.db.collection('posts').doc(id).set(data);
     this.db.collection('posts').doc(id).update(data);
     this.router.navigate(['/posts']);
   }

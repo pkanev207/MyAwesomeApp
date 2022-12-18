@@ -10,7 +10,6 @@ mat-spinner {
 }
 
 mat-card {
-  /* max-height: 100px; */
   display: flex;
   cursor: pointer;
   margin: 0.7rem;
